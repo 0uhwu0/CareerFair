@@ -3,6 +3,7 @@ package com.project.careerfair.controller;
 import com.project.careerfair.domain.exhibitionInfo.ExhibitionInfo;
 import com.project.careerfair.service.admin.ExhibitionInfoService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 @RequiredArgsConstructor
+@Slf4j
 public class HomeController {
 
     @Value("${kakao.accessKey}")
@@ -36,6 +38,7 @@ public class HomeController {
         ExhibitionInfo exhibitionInfo = exhibitionInfoService.getCurrentInfo();
         model.addAttribute("kakaoMap", accessKey);
         model.addAttribute("exhibitionInfo", exhibitionInfo);
+        log.info("good   {}", accessKey);
         return "exhibitionInfo/location";
     }
 
